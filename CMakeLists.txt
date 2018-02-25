@@ -24,7 +24,7 @@ include_directories("${PROJECT_BINARY_DIR}")
 
 # Define sources and executable
 set(EXECUTABLE_NAME "heavyweapon.out")
-add_executable(${EXECUTABLE_NAME} main.cpp)
+add_executable(${EXECUTABLE_NAME} main.cpp ${SOURCE_FILES})
 
 
 # Detect and add SFML
