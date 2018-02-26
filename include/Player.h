@@ -12,8 +12,15 @@
 
 
 class Player : public HealthEntity {
+private:
+    float move_speed = 200;
+
+    //virtual void draw(sf::RenderTarget& target, sf::RenderStates states) const;
+
 public:
     Player();
+
+    void move(float time, float multiplier);
 };
 
 

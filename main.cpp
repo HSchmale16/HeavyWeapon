@@ -12,6 +12,8 @@ int main(int argc, char* argv[]) {
 
     // Code adapted from the SFML 2 "Window" example.
     sf::RenderWindow app(sf::VideoMode(800, 600), "heavyweapon");
+    //app.setFramerateLimit(400);
+
     sf::Font font;
     sf::Text fps_text;
 
@@ -26,7 +28,8 @@ int main(int argc, char* argv[]) {
         return -1;
     }
 
-    app.setFramerateLimit(120);
+    game.updateWindowSize(app.getSize());
+    size_t frame_count = 0;
 
     while (app.isOpen()) {
         sf::Event Event;
@@ -42,13 +45,15 @@ int main(int argc, char* argv[]) {
                     Event.size.width,
                     Event.size.height
                 )));
-                
+                game.updateWindowSize(app.getSize());
             }
         }
-        
-        char c[20];
-        snprintf(c, 20, "%07d fps", (int)fps);
-        fps_text.setString(c);
+
+        if (frame_count % 20 == 0) {
+            char c[20];
+            snprintf(c, 20, "%07d fps", (int)fps);
+            fps_text.setString(c);
+        }
 
         ControlState cs = getControlState(app);
         game.step(time_delta, cs);
@@ -59,9 +64,8 @@ int main(int argc, char* argv[]) {
         app.display();
 
         // fps
-        current_time = clock.restart().asSeconds();
-        fps = 1.f / (time_delta = (current_time - last_time));
-        last_time = current_time;
+        fps = 1.f / (time_delta = clock.restart().asSeconds());
+        ++frame_count;
     }
 
     return 0;

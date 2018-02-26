@@ -18,7 +18,7 @@ ControlState getControlState(const sf::Window& window) {
     if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left))
         cs.moveLeftPressed = true;
     if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right))
-        cs.moveLeftPressed = true;
+        cs.moveRightPressed = true;
     if (sf::Mouse::isButtonPressed(sf::Mouse::Left))
         cs.shootPressed = true;
     cs.targetPosition = sf::Mouse::getPosition(window);
