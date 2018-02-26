@@ -11,7 +11,7 @@ Game game;
 int main(int argc, char* argv[]) {
 
     // Code adapted from the SFML 2 "Window" example.
-    sf::RenderWindow app(sf::VideoMode(800, 600), "heavyweapon");
+    sf::RenderWindow app(sf::VideoMode(800, 450), "heavyweapon");
     //app.setFramerateLimit(400);
 
     sf::Font font;
@@ -41,11 +41,13 @@ int main(int argc, char* argv[]) {
             if (Event.type == sf::Event::GainedFocus)
                 game.resume();
             if (Event.type == sf::Event::Resized) {
+                /*
                 app.setView(sf::View(sf::FloatRect(0, 0,
                     Event.size.width,
                     Event.size.height
                 )));
                 game.updateWindowSize(app.getSize());
+                */
             }
         }
 

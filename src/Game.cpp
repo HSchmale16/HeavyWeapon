@@ -11,12 +11,7 @@ void Game::step(float ms, const ControlState& cs) {
     if(paused)
         return;
     background.step(ms);
-    if (cs.moveLeftPressed ^ cs.moveRightPressed) {
-        if (cs.moveLeftPressed)
-            player.move(ms, -1);
-        else
-            player.move(ms, 1);
-    }
+    player.step(ms, cs);
 }
 
 void Game::draw(sf::RenderTarget& target, sf::RenderStates states) const {
@@ -33,5 +28,6 @@ void Game::updateWindowSize(sf::Vector2u newSize) {
     windowSize = newSize;
     updatePlayerBounds();
     background.handleWindowSizeChange();
+
     /// TODO: Notify children
 }
