@@ -23,5 +23,7 @@ public:
     void move(float time, float multiplier);
 };
 
+const float PLAYER_LOWER_X_BOUND = 0.05;
+const float PLAYER_UPPER_X_BOUND = 0.9;
 
 #endif // PLAYER_H_INC

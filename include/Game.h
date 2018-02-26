@@ -20,7 +20,9 @@ private:
     Background background;
     bool paused = false;
     sf::Vector2u windowSize;
-
+    sf::Vector2f playerBounds;
+    
+    void updatePlayerBounds();
 
     virtual void draw(sf::RenderTarget& target, sf::RenderStates states) const;
 public:
@@ -57,8 +59,17 @@ public:
      * or the view changes.
      */
     void updateWindowSize(sf::Vector2u newSize);
+
+    /** Uses the window size to calculate how far the player can move on screen.
+     */
+    const sf::Vector2f& getPlayerXBounds() const {
+        return playerBounds;
+    }
 };
 
+/** The global game state object. Probably not thread safe, but hey we 
+ * aren't doing anything in threads
+ */
 extern Game game;
 
 #endif // GAME_H_INC

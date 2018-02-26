@@ -24,8 +24,14 @@ void Game::draw(sf::RenderTarget& target, sf::RenderStates states) const {
     target.draw(player);
 }
 
+void Game::updatePlayerBounds() {
+    playerBounds.x = windowSize.x * PLAYER_LOWER_X_BOUND;
+    playerBounds.y = windowSize.x * PLAYER_UPPER_X_BOUND;
+}
+
 void Game::updateWindowSize(sf::Vector2u newSize) {
     windowSize = newSize;
+    updatePlayerBounds();
     /// TODO: Notify children
     background.handleWindowSizeChange();
 }
