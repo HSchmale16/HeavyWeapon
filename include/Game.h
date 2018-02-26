@@ -10,6 +10,10 @@
 #include "Utils.h"
 #include "Background/Background.h"
 
+class UIState {
+public:
+};
+
 /** The game state management class. This mangages all 
  * game state, and makes appropite calls to other classes.
  */
@@ -21,6 +25,7 @@ private:
     bool paused = false;
     sf::Vector2u windowSize;
     sf::Vector2f playerBounds;
+    float enemySpawnX;
     
     void updatePlayerBounds();
 
@@ -64,6 +69,10 @@ public:
      */
     const sf::Vector2f& getPlayerXBounds() const {
         return playerBounds;
+    }
+
+    float getEnemySpawnX() const {
+        return enemySpawnX;
     }
 };
 

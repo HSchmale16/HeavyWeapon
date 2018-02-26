@@ -32,6 +32,6 @@ void Game::updatePlayerBounds() {
 void Game::updateWindowSize(sf::Vector2u newSize) {
     windowSize = newSize;
     updatePlayerBounds();
-    /// TODO: Notify children
     background.handleWindowSizeChange();
+    /// TODO: Notify children
 }

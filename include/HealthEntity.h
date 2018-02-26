@@ -5,8 +5,8 @@
 
 class HealthEntity : public GameEntity {
 private:
-    int current_health;
-    int max_health;
+    float current_health;
+    float max_health;
 public:
 
     float getHealthPercent() {

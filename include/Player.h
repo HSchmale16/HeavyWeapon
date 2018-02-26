@@ -10,7 +10,9 @@
 
 #include "HealthEntity.h"
 
-
+/**
+ * The controllable player entity. It's a tank.
+ */
 class Player : public HealthEntity {
 private:
     float move_speed = 200;

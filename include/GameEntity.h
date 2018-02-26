@@ -15,7 +15,6 @@ private:
     virtual void draw(sf::RenderTarget& target, sf::RenderStates states) const;
 
 public:
-    void step(float ms);
 
     virtual void handleWindowSizeChange();
 };
