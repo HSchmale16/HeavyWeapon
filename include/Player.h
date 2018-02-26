@@ -51,4 +51,11 @@ public:
 const float PLAYER_LOWER_X_BOUND = 0.1f;
 const float PLAYER_UPPER_X_BOUND = 0.9f;
 
+/// Player Turret Rotation Correction Factor because the sprite is 
+/// off by 90 degrees
+const float PT_ROT_CORRECTION_FACTOR = 90;
+
+const float PT_ROT_BOUND_LOWER = 0;
+const float PT_ROT_BOUND_UPPER = 180;
+
 #endif // PLAYER_H_INC

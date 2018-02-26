@@ -66,5 +66,8 @@ void PlayerTurret::setPosition(const sf::Vector2f& pos) {
 
 void PlayerTurret::updateTarget(const sf::Vector2f& pos) {
     sf::Vector2f delta = pos - shape.getPosition();
-    shape.setRotation(180 / M_PI * atan2(delta.y, delta.x) + 90);
+    float rotation = 180 / M_PI * atan2(delta.y, delta.x);
+    cout << rotation << endl;
+    if(rotation < PT_ROT_BOUND_LOWER || rotation > PT_ROT_BOUND_UPPER)
+        shape.setRotation(rotation + PT_ROT_CORRECTION_FACTOR);
 }
