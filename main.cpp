@@ -5,12 +5,12 @@
 
 using namespace std;
 
+Game game;
 
 
 int main(int argc, char* argv[]) {
 
     // Code adapted from the SFML 2 "Window" example.
-    Game game;
     sf::RenderWindow app(sf::VideoMode(800, 600), "heavyweapon");
     sf::Font font;
     sf::Text fps_text;
@@ -33,16 +33,28 @@ int main(int argc, char* argv[]) {
         while (app.pollEvent(Event)) {
             if (Event.type == sf::Event::Closed)
                 app.close();
+            if (Event.type == sf::Event::LostFocus)
+                game.pause();
+            if (Event.type == sf::Event::GainedFocus)
+                game.resume();
+            if (Event.type == sf::Event::Resized) {
+                app.setView(sf::View(sf::FloatRect(0, 0,
+                    Event.size.width,
+                    Event.size.height
+                )));
+                
+            }
         }
         
         char c[20];
-        snprintf(c, 20, "%07.3f fps", fps);
+        snprintf(c, 20, "%07d fps", (int)fps);
         fps_text.setString(c);
 
         ControlState cs = getControlState(app);
         game.step(time_delta, cs);
 
         app.clear(sf::Color::Black);
+        app.draw(game);
         app.draw(fps_text);
         app.display();
 

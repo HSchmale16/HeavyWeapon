@@ -8,11 +8,12 @@
  * 
  */
 
-#include "GameEntity.h"
+#include "HealthEntity.h"
 
 
-class Player : public GameEntity {
-
+class Player : public HealthEntity {
+public:
+    Player();
 };
 
 
