@@ -50,6 +50,8 @@ public:
 
 const float PLAYER_LOWER_X_BOUND = 0.1f;
 const float PLAYER_UPPER_X_BOUND = 0.9f;
+/// How far from the mouse pointer the player must be before attempting to fix.
+const float PLAYER_MOVE_THRESHOLD = 5.f;
 
 /// Player Turret Rotation Correction Factor because the sprite is 
 /// off by 90 degrees
