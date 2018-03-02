@@ -44,3 +44,7 @@ const sf::Texture* getOrLoadTexture(const std::string& path) {
 sf::Vector2f operator/(sf::Vector2f v, int l) {
     return sf::Vector2f(v.x / l, v.y / l);
 }
+
+sf::Vector2f operator*(const sf::Vector2f& left, const sf::Vector2f& right) {
+    return sf::Vector2f(left.x * right.x, left.y * right.y);
+}

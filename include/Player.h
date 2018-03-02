@@ -21,7 +21,8 @@ private:
 public:
     PlayerTurret();
 
-    sf::Vector2f getBulletSpawnLocation();
+    sf::Vector2f getBulletSpawnLocation() const;
+    sf::Vector2f getNormal() const;
 
     void updateTarget(const sf::Vector2f& target);
 
@@ -46,6 +47,9 @@ public:
     void step(float time, const ControlState& state);
     void move(float time, float multiplier);
     void updateTurret(const ControlState& state);
+
+    sf::Vector2f getBulletSpawnLocation() const;
+    sf::Vector2f getBulletNormal() const;
 };
 
 const float PLAYER_LOWER_X_BOUND = 0.1f;
@@ -57,7 +61,9 @@ const float PLAYER_MOVE_THRESHOLD = 5.f;
 /// off by 90 degrees
 const float PT_ROT_CORRECTION_FACTOR = 90;
 
+/// How far the player turret can rotate to the right
 const float PT_ROT_BOUND_LOWER = 0;
+/// How far the player turret can rotate to the left
 const float PT_ROT_BOUND_UPPER = 180;
 
 #endif // PLAYER_H_INC

@@ -36,14 +36,6 @@ void Player::updateTurret(const ControlState& state) {
 }
 
 void Player::step(float time, const ControlState& cs) {
-    /*
-    if (cs.moveLeftPressed ^ cs.moveRightPressed) {
-        if (cs.moveLeftPressed)
-            move(time, -1);
-        else
-            move(time, 1);
-    }
-    */
     float targetX = cs.targetPosition.x;
     float currentX = shape.getPosition().x;
     float delta = abs(targetX - currentX);
@@ -60,6 +52,14 @@ void Player::step(float time, const ControlState& cs) {
 void Player::draw(sf::RenderTarget& target, sf::RenderStates states) const {
     target.draw(shape);
     target.draw(turret);
+}
+
+sf::Vector2f Player::getBulletNormal() const {
+    return turret.getNormal();
+}
+
+sf::Vector2f Player::getBulletSpawnLocation() const {
+    return turret.getBulletSpawnLocation();
 }
 
 //
@@ -81,4 +81,15 @@ void PlayerTurret::updateTarget(const sf::Vector2f& pos) {
     float rotation = 180 / M_PI * atan2(delta.y, delta.x);
     if(rotation < PT_ROT_BOUND_LOWER || rotation > PT_ROT_BOUND_UPPER)
         shape.setRotation(rotation + PT_ROT_CORRECTION_FACTOR);
+}
+
+sf::Vector2f PlayerTurret::getNormal() const {
+    float rot = M_PI / 180.f * (shape.getRotation() - PT_ROT_CORRECTION_FACTOR);
+    float x = cos(rot), y = sin(rot);
+    return sf::Vector2f(x, y);
+}
+
+sf::Vector2f PlayerTurret::getBulletSpawnLocation() const {
+    sf::Vector2f push = (shape.getSize() / 2) * getNormal();
+    return shape.getPosition() + push;
 }

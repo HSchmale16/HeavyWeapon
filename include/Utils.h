@@ -32,4 +32,7 @@ const sf::Texture* getOrLoadTexture(const std::string& path);
 
 sf::Vector2f operator/(sf::Vector2f v, int l);
 
+sf::Vector2f operator*(const sf::Vector2f& left, const sf::Vector2f& right);
+
+
 #endif // UTILS_H_INC

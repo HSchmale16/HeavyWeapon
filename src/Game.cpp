@@ -12,11 +12,16 @@ void Game::step(float ms, const ControlState& cs) {
         return;
     background.step(ms);
     player.step(ms, cs);
+    bulletPool.step(ms,
+        player.getBulletSpawnLocation(),
+        player.getBulletNormal(),
+        cs.shootPressed);
 }
 
 void Game::draw(sf::RenderTarget& target, sf::RenderStates states) const {
     target.draw(background);
     target.draw(player);
+    target.draw(bulletPool);
 }
 
 void Game::updatePlayerBounds() {

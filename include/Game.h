@@ -9,6 +9,7 @@
 #include "Player.h"
 #include "Utils.h"
 #include "Background/Background.h"
+#include "BulletPool.h"
 
 class UIState {
 public:
@@ -20,12 +21,14 @@ public:
 class Game : public sf::Drawable {
 private:
     float forward_speed;
+    float enemySpawnX;
     Player player;
     Background background;
-    bool paused = false;
+    BulletManager bulletPool;
     sf::Vector2u windowSize;
     sf::Vector2f playerBounds;
-    float enemySpawnX;
+    bool paused = false;
+
     
     void updatePlayerBounds();
 

@@ -12,7 +12,7 @@ int main(int argc, char* argv[]) {
 
     // Code adapted from the SFML 2 "Window" example.
     sf::RenderWindow app(sf::VideoMode(800, 450), "heavyweapon");
-    //app.setFramerateLimit(400);
+    app.setFramerateLimit(400);
 
     sf::Font font;
     sf::Text fps_text;
