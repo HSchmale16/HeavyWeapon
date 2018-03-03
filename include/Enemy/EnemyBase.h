@@ -1,14 +1,14 @@
-#ifndef ENEMY_H_INC
-#define ENEMY_H_INC
+#ifndef ENEMY_BASE_H_INC
+#define ENEMY_BASE_H_INC
 
 #include "HealthEntity.h"
 
 /**
  * The enemy abstract base class
  */
-class Enemy : public HealthEntity {
+class EnemyBase : public HealthEntity {
 public:
     virtual void update(float seconds) = 0;
 };
 
-#endif // ENEMY_H_INC
+#endif // ENEMY_BASE_H_INC
