@@ -17,7 +17,9 @@ bool Bullet::step(float time) {
 }
 
 BulletManager::BulletManager()
-:timeElapsedSinceLastShot(0), whenToShoot(0.25f), howManyToShoot(1) {
+: timeElapsedSinceLastShot(0), 
+whenToShoot(TIME_BETWEEN_SHOTS),
+howManyToShoot(1) {
     bullets.reserve(BULLET_POOL_BASE_SIZE);
 }
 

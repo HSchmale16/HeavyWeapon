@@ -54,5 +54,6 @@ public:
 };
 
 const size_t BULLET_POOL_BASE_SIZE = 2000;
+const float TIME_BETWEEN_SHOTS = 0.5f;
 
 #endif // BULLET_POOL_H_INC
