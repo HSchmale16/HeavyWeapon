@@ -8,17 +8,21 @@ typedef float DamageValue;
 typedef std::pair<bool,DamageValue> DamageCalculation;
 
 class Bullet;
+class Game;
 
+/** Manages the bullets on screen, and how they spawn
+ */
 class BulletManager : public sf::Drawable {
     std::vector<Bullet> bullets;
     float timeElapsedSinceLastShot;
     float whenToShoot;
     size_t howManyToShoot;
+    Game& game;
 
     virtual void draw(sf::RenderTarget& target, sf::RenderStates states) const;
 
 public:
-    BulletManager();
+    BulletManager(Game& game);
 
     /** Creates a bullet at the given pos, traveling at the passed speed
      */
@@ -32,10 +36,17 @@ public:
      */
     DamageCalculation testBulletHit(GameEntity& entity);
 
-    /**\brief calls the step function on all managed bullets to move them
+    /**\brief Steps the bullet management forward
      * \param fire whether to spawn new bullets
+     * 
+     * This will spawn a new bullet if fire is pressed, and then step each of the 
+     * bullets on screen forward.
      */
-    void step(float time, sf::Vector2f pos, sf::Vector2f speed, bool fire);
+    void step(
+        float time, 
+        const sf::Vector2f& pos, 
+        const sf::Vector2f& speed,
+        bool fire);
 };
 
 class Bullet : public sf::Drawable {
@@ -55,5 +66,7 @@ public:
 
 const size_t BULLET_POOL_BASE_SIZE = 2000;
 const float TIME_BETWEEN_SHOTS = 0.5f;
+const float BASE_BULLET_RADIUS = 1.0f;
+const size_t BASE_BULLETS_PER_SHOT = 1;
 
 #endif // BULLET_POOL_H_INC

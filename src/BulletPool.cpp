@@ -2,7 +2,7 @@
 
 Bullet::Bullet(sf::Vector2f pos, sf::Vector2f speed)
 : velocity(speed.x * SPEED, speed.y * SPEED) {
-    shape.setRadius(5);
+    shape.setRadius(BASE_BULLET_RADIUS);
     shape.setOrigin(sf::Vector2f(5, 5) / 2.f);
     shape.setPosition(pos);
 }
@@ -16,10 +16,11 @@ bool Bullet::step(float time) {
     return false;
 }
 
-BulletManager::BulletManager()
+BulletManager::BulletManager(Game& game)
 : timeElapsedSinceLastShot(0), 
 whenToShoot(TIME_BETWEEN_SHOTS),
-howManyToShoot(1) {
+howManyToShoot(BASE_BULLETS_PER_SHOT),
+game(game) {
     bullets.reserve(BULLET_POOL_BASE_SIZE);
 }
 
@@ -27,7 +28,8 @@ void BulletManager::createBullet(sf::Vector2f pos, sf::Vector2f vel) {
     bullets.push_back(Bullet(pos, vel));
 }
 
-void BulletManager::step(float time, sf::Vector2f pos, sf::Vector2f speed, bool fire) {
+void BulletManager::step(float time, const sf::Vector2f& pos, 
+        const sf::Vector2f& speed, bool fire) {
     timeElapsedSinceLastShot += time;
     if (fire && timeElapsedSinceLastShot > whenToShoot) {
         timeElapsedSinceLastShot = 0;

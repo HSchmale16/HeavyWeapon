@@ -3,7 +3,8 @@
 using std::cout;
 using std::endl;
 
-Game::Game() {
+Game::Game() 
+: bulletPool(*this) {
 
 }
 
