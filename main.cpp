@@ -7,26 +7,23 @@ using namespace std;
 
 Game game;
 
-
 int main(int argc, char* argv[]) {
-
     // Code adapted from the SFML 2 "Window" example.
     sf::RenderWindow app(sf::VideoMode(800, 450), "heavyweapon");
-    app.setFramerateLimit(400);
+    //app.setFramerateLimit(400);
 
     sf::Font font;
-    sf::Text fps_text;
+    if (!font.loadFromFile("resources/fonts/F25_Bank_Printer.otf")) {
+        return -1;
+    }
 
+    sf::Text fps_text;
     fps_text.setFont(font);
     fps_text.setCharacterSize(24);
     fps_text.setFillColor(sf::Color::White);
 
     sf::Clock clock;
     float last_time = 0, current_time, fps, time_delta = 0;
-
-    if (!font.loadFromFile("resources/fonts/F25_Bank_Printer.otf")) {
-        return -1;
-    }
 
     game.updateWindowSize(app.getSize());
     size_t frame_count = 0;

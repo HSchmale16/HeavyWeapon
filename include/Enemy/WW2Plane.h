@@ -3,8 +3,10 @@
 
 #include "EnemyBase.h"
 
-class WW2Plane : public BaseEnemy {
-
+class WW2Plane : public EnemyBase {
+public:
+    WW2Plane();
+    virtual void update(float step);
 };
 
 

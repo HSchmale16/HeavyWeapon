@@ -3,21 +3,31 @@
 
 #include "GameEntity.h"
 
+typedef float DamageValue;
+typedef std::pair<bool,DamageValue> DamageCalculation;
+
+/** When a player is killed. This is one because important reasons
+ * relating to comparisons.
+ */
+const float KILLED_HEALTH_THRESHOLD = 1.f;
+
+/** Defines an entity which has health
+ */
 class HealthEntity : public GameEntity {
 private:
     float current_health;
     float max_health;
 public:
 
-    float getHealthPercent() {
+    float getHealthPercent() const {
         return (float) current_health / max_health;
     }
 
-    int getMaxHealth() {
+    int getMaxHealth() const {
         return max_health;
     }
 
-    int getCurrentHealth() {
+    int getCurrentHealth() const {
         return current_health;
     }
 
@@ -25,6 +35,9 @@ public:
         current_health = max_health;
     }
 
+    bool getKilledState() const {
+        return current_health < KILLED_HEALTH_THRESHOLD;
+    }
 };
 
 #endif // HEALTH_ENTITY_H_INC
