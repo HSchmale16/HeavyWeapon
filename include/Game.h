@@ -21,7 +21,6 @@ public:
 class Game : public sf::Drawable {
 private:
     float forward_speed;
-    float enemySpawnX;
     Player player;
     Background background;
     BulletManager bulletPool;
@@ -61,6 +60,10 @@ public:
         return windowSize;
     }
 
+    float getRightOffscreenSpawnX() const {
+        return getWindowSize().x + 150;
+    }
+
     /**
      * Updates the window size, and notifys all game objects of the 
      * change. Should be called when ever the window is resized and
@@ -72,10 +75,6 @@ public:
      */
     const sf::Vector2f& getPlayerXBounds() const {
         return playerBounds;
-    }
-
-    float getEnemySpawnX() const {
-        return enemySpawnX;
     }
 };
 

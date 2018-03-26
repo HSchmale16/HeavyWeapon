@@ -4,6 +4,8 @@
 #include "EnemyBase.h"
 
 class WW2Plane : public EnemyBase {
+    const float SPEED_PER_SEC = -10.0f;
+    const std::string SPRITESHEET_PATH = "resources/textures/TestEnemy.png";
 public:
     WW2Plane();
     virtual void update(float step);

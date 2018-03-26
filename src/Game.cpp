@@ -5,7 +5,6 @@ using std::endl;
 
 Game::Game() 
 : bulletPool(*this) {
-
 }
 
 void Game::step(float ms, const ControlState& cs) {
