@@ -4,7 +4,11 @@ using std::cout;
 using std::endl;
 
 Game::Game() 
-: bulletPool(*this) {
+: bulletPool(*this), enemyManager() {
+    TickMap tm = {
+        {"WW2Plane", 1000}
+    };
+    enemyManager.setDelayBased(tm);
 }
 
 void Game::step(float ms, const ControlState& cs) {
@@ -16,11 +20,13 @@ void Game::step(float ms, const ControlState& cs) {
         player.getBulletSpawnLocation(),
         player.getBulletNormal(),
         cs.shootPressed);
+    enemyManager.step(ms);
 }
 
 void Game::draw(sf::RenderTarget& target, sf::RenderStates states) const {
     target.draw(background);
     target.draw(player);
+    target.draw(enemyManager);
     target.draw(bulletPool);
 }
 

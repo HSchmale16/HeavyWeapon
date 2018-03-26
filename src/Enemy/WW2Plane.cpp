@@ -1,10 +1,10 @@
 #include "Enemy/WW2Plane.h"
 #include "Game.h"
 #include "Utils.h"
-
+#include <cstdlib>
 
 WW2Plane::WW2Plane() : EnemyBase() {
-    shape.setPosition(game.getRightOffscreenSpawnX(), 350);
+    shape.setPosition(game.getRightOffscreenSpawnX(), rand() % 250 + 50);
     shape.setTexture(*getOrLoadTexture(SPRITESHEET_PATH));
 }
 

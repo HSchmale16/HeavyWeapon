@@ -10,6 +10,7 @@
 #include "Utils.h"
 #include "Background/Background.h"
 #include "BulletPool.h"
+#include "Enemy/EnemyManager.h"
 
 class UIState {
 public:
@@ -24,6 +25,7 @@ private:
     Player player;
     Background background;
     BulletManager bulletPool;
+    EnemyManager enemyManager;
     sf::Vector2u windowSize;
     sf::Vector2f playerBounds;
     bool paused = false;
