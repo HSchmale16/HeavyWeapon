@@ -8,6 +8,10 @@
  * Pretty much is pure virtual.
  */
 class EnemyBase : public HealthEntity {
+protected:
+    sf::Sprite shape;
+
+    virtual void draw(sf::RenderTarget& t, sf::RenderStates s) const;
 public:
     virtual void update(float seconds) = 0;
 

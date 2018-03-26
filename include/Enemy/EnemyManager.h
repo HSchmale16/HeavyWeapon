@@ -5,7 +5,7 @@
 
 /** Constructs a requested enemy by name
  */
-EnemyBase* makeEnemyByName(std::string name);
+EnemyBase* makeEnemyByName(const std::string& name);
 
 /**
  * Provides enemy spawning.

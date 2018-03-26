@@ -16,8 +16,6 @@ Player::Player() {
     //shape.setTexture(getOrLoadTexture("resources/textures/TurretTest.png"));
     shape.setOrigin(sf::Vector2f(shape.getSize()) / 2);
     turret.setPosition(shape.getPosition());
-
-    handleWindowSizeChange();
 }
 
 void Player::move(float time, float multiplier) {

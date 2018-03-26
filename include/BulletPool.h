@@ -32,7 +32,7 @@ public:
      * Tests if any bullet hit a given GameEntity if an enemy was hit it will 
      * remove the bullet and return true.
      */
-    DamageCalculation testBulletHit(GameEntity& entity);
+    DamageCalculation testBulletHit(HealthEntity& entity);
 
     /**\brief Steps the bullet management forward
      * \param fire whether to spawn new bullets

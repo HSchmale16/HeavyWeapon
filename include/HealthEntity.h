@@ -1,7 +1,7 @@
 #ifndef HEALTH_ENTITY_H_INC
 #define HEALTH_ENTITY_H_INC
 
-#include "GameEntity.h"
+#include <SFML/Graphics.hpp>
 
 typedef float DamageValue;
 typedef std::pair<bool,DamageValue> DamageCalculation;
@@ -13,7 +13,7 @@ const float KILLED_HEALTH_THRESHOLD = 1.f;
 
 /** Defines an entity which has health
  */
-class HealthEntity : public GameEntity {
+class HealthEntity : public sf::Drawable {
 private:
     float current_health;
     float max_health;

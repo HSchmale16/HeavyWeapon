@@ -37,7 +37,7 @@ class Player : public HealthEntity {
 private:
     const float move_speed = 200;
     PlayerTurret turret;
-
+    sf::RectangleShape shape;
 
     virtual void draw(sf::RenderTarget& target, sf::RenderStates states) const;
 
