@@ -37,15 +37,6 @@ int main(int argc, char* argv[]) {
                 game.pause();
             if (Event.type == sf::Event::GainedFocus)
                 game.resume();
-            if (Event.type == sf::Event::Resized) {
-                /*
-                app.setView(sf::View(sf::FloatRect(0, 0,
-                    Event.size.width,
-                    Event.size.height
-                )));
-                game.updateWindowSize(app.getSize());
-                */
-            }
         }
 
         if (frame_count % 20 == 0) {

@@ -20,7 +20,7 @@ void Game::step(float ms, const ControlState& cs) {
         player.getBulletSpawnLocation(),
         player.getBulletNormal(),
         cs.shootPressed);
-    enemyManager.step(ms);
+    enemyManager.step(ms, bulletPool);
 }
 
 void Game::draw(sf::RenderTarget& target, sf::RenderStates states) const {

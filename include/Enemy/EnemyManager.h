@@ -26,6 +26,10 @@ enum EnemySpawnManagerMode {
  */
 typedef std::map<std::string,uint64_t> TickMap;
 
+typedef void (*ApplyEnemyFunc)(EnemyBase*);
+
+class BulletManager;
+
 /**
  * Provides enemy spawning.
  * 
@@ -70,11 +74,25 @@ public:
 
     EnemySpawnManagerMode getMode() const;
 
-    void step(float seconds);
+    // void step(float seconds);
 
+    void step(float seconds, BulletManager& bm);
+
+    /**\brief Turns off enemy spawning
+     */
     void setDoNothing();
 
-    void setTimeseries(const std::string&);
+    /**\brief Turns on timeseries spawning
+     * 
+     * Loads the timeseries data from a string
+     */
+    void setTimeseries(const std::string& data);
+
+    /**\brief Turns on timeseries spawning
+     * 
+     * Loads the timeseries spawn data from a stream
+     */
+    void setTimeseries(std::istream& stream);
 
     void setDelayBased(const TickMap tm);
 };

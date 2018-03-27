@@ -16,11 +16,15 @@ bool Bullet::step(float time) {
     return false;
 }
 
+/*
+ * BulletManager Impl
+ */
+
 BulletManager::BulletManager(Game& game)
-: timeElapsedSinceLastShot(0), 
-whenToShoot(TIME_BETWEEN_SHOTS),
-howManyToShoot(BASE_BULLETS_PER_SHOT),
-game(game) {
+        : timeElapsedSinceLastShot(0), 
+        whenToShoot(TIME_BETWEEN_SHOTS),
+        howManyToShoot(BASE_BULLETS_PER_SHOT),
+        game(game) {
     bullets.reserve(BULLET_POOL_BASE_SIZE);
 }
 
@@ -44,6 +48,16 @@ void BulletManager::step(float time, const sf::Vector2f& pos,
             ++bit;
         }
     }
+}
+
+DamageCalculation BulletManager::testBulletHit(const HealthEntity& he) {
+    sf::FloatRect bounds = he.getBounds();
+    auto bit = bullets.begin();
+    while(bit != bullets.end()) {
+        
+        ++bit;
+    }
+    return {false, 0};
 }
 
 void  BulletManager::draw(sf::RenderTarget& target, sf::RenderStates states) const {

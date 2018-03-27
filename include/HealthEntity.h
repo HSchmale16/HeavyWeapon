@@ -38,6 +38,8 @@ public:
     bool getKilledState() const {
         return current_health < KILLED_HEALTH_THRESHOLD;
     }
+
+    virtual sf::FloatRect getBounds() const = 0;
 };
 
 #endif // HEALTH_ENTITY_H_INC

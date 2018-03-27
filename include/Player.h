@@ -50,6 +50,8 @@ public:
 
     sf::Vector2f getBulletSpawnLocation() const;
     sf::Vector2f getBulletNormal() const;
+
+    virtual sf::FloatRect getBounds() const;
 };
 
 const float PLAYER_LOWER_X_BOUND = 0.1f;

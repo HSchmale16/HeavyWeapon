@@ -60,6 +60,10 @@ sf::Vector2f Player::getBulletSpawnLocation() const {
     return turret.getBulletSpawnLocation();
 }
 
+sf::FloatRect Player::getBounds() const {
+    return shape.getGlobalBounds();
+}
+
 //
 // Player Turret Impl
 //

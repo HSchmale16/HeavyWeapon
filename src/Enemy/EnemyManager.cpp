@@ -1,5 +1,6 @@
 #include "Enemy/EnemyManager.h"
 #include "Enemy/all.h"
+#include "BulletPool.h"
 #include <iostream>
 
 EnemyBase* makeEnemyByName(const std::string& name) {
@@ -20,7 +21,7 @@ void EnemyManager::resetTime() {
     currentTimeIndex = 0;
 }
 
-void EnemyManager::step(float seconds) {
+void EnemyManager::step(float seconds, BulletManager& bm) {
     uint64_t ticksPassed = seconds * 1000;
     currentTimeIndex += ticksPassed;
     switch(mode) {
@@ -36,6 +37,7 @@ void EnemyManager::step(float seconds) {
 
     for (auto& enemy : enemiesOnScreen) {
         enemy->update(seconds);
+        
     }
 }
 
@@ -53,7 +55,7 @@ void EnemyManager::setDelayBased(const TickMap tm) {
 
 // TICK EXECUTORS
 void EnemyManager::executeTimeseriesTick(uint64_t ticksPassed) {
-
+    /// TODO: Implemnet
 }
 
 void EnemyManager::executeDelayTick(uint64_t ticksPassed) {
