@@ -22,6 +22,7 @@ private:
     float current_health;
     float max_health;
 public:
+    HealthEntity();
 
     float getHealthPercent() const {
         return (float) current_health / max_health;
@@ -44,6 +45,8 @@ public:
     }
 
     virtual sf::FloatRect getBounds() const = 0;
+
+    virtual void applyDamageCalculation(DamageCalculation& dc);
 };
 
 #endif // HEALTH_ENTITY_H_INC

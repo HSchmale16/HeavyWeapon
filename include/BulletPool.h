@@ -49,7 +49,7 @@ public:
 
 class Bullet : public sf::Drawable {
 private:
-    static const constexpr float SPEED = 300.f;
+    static const constexpr float SPEED = 400.f;
     sf::CircleShape shape;
     sf::Vector2f velocity;
 
@@ -65,7 +65,7 @@ public:
 };
 
 const size_t BULLET_POOL_BASE_SIZE = 2000;
-const float TIME_BETWEEN_SHOTS = 0.5f;
+const float TIME_BETWEEN_SHOTS = 0.2f;
 const float BASE_BULLET_RADIUS = 1.0f;
 const size_t BASE_BULLETS_PER_SHOT = 1;
 

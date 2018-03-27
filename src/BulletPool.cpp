@@ -75,7 +75,7 @@ DamageCalculation BulletManager::testBulletHit(const HealthEntity& he) {
             ++bit;
         }
     }
-    return {false, 0};
+    return calculation;
 }
 
 void  BulletManager::draw(sf::RenderTarget& target, sf::RenderStates states) const {

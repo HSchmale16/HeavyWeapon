@@ -35,9 +35,20 @@ void EnemyManager::step(float seconds, BulletManager& bm) {
         break;
     }
 
-    for (auto& enemy : enemiesOnScreen) {
+    auto enemyIt = enemiesOnScreen.begin();
+    while(enemyIt != enemiesOnScreen.end()) {
+        EnemyBase* enemy = *enemyIt;
         enemy->update(seconds);
-        bm.testBulletHit(*enemy);
+        DamageCalculation dc = bm.testBulletHit(*enemy);
+        enemy->applyDamageCalculation(dc);
+
+
+        if(enemy->getKilledState()) {
+            enemyIt = enemiesOnScreen.erase(enemyIt);
+            delete enemy;
+        } else {
+            ++enemyIt;
+        }
     }
 }
 
@@ -59,16 +70,11 @@ void EnemyManager::executeTimeseriesTick(uint64_t ticksPassed) {
 }
 
 void EnemyManager::executeDelayTick(uint64_t ticksPassed) {
-    static int n = 0;
-    ++n;
     for (auto& t : delays) {
         t.second.ticksSinceLastSpawn += ticksPassed;
         if (t.second.ticksSinceLastSpawn > t.second.spawnAfterTicks) {
             enemiesOnScreen.push_back(makeEnemyByName(t.first));
             t.second.ticksSinceLastSpawn = 0;
-        }
-        if(n % 100 == 0) {
-            std::cout << t.first << "  " << t.second.ticksSinceLastSpawn << std::endl;
         }
     }
 }
