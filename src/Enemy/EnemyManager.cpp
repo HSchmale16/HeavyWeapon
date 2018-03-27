@@ -17,6 +17,22 @@ EnemyManager::EnemyManager()
     enemiesOnScreen.reserve(ENEMY_RESERVE_CAP);
 }
 
+EnemyManager::~EnemyManager() {
+    // clear the on screen manager
+    auto it = enemiesOnScreen.begin();
+    while(it != enemiesOnScreen.end()) {
+        delete *it;
+        it = enemiesOnScreen.erase(it);
+    }
+
+    // clear the priority queue
+    while(!tsSpawnQueue.empty()) {
+        SpawnTimeFrame frame = tsSpawnQueue.top();
+        delete frame.enemy;
+        tsSpawnQueue.pop();
+    }
+}
+
 void EnemyManager::resetTime() {
     currentTimeIndex = 0;
 }

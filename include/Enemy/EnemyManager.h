@@ -69,6 +69,7 @@ private:
     void executeTimeseriesTick(uint64_t ticksPassed);
 public:
     EnemyManager();
+    virtual ~EnemyManager();
 
     void resetTime();
 

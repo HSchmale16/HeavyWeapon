@@ -10,6 +10,6 @@ HealthEntity::HealthEntity()
 void HealthEntity::applyDamageCalculation(DamageCalculation& dc) {
     if(dc.hit) {
         current_health -= dc.amount;
-        cout << getCurrentHealth() << endl;
+        // cout << getCurrentHealth() << endl;
     }
 }
