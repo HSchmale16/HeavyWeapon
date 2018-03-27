@@ -4,7 +4,11 @@
 #include <SFML/Graphics.hpp>
 
 typedef float DamageValue;
-typedef std::pair<bool,DamageValue> DamageCalculation;
+
+struct DamageCalculation {
+    bool hit = false;
+    DamageValue amount;
+};
 
 /** When a player is killed. This is one because important reasons
  * relating to comparisons.

@@ -37,7 +37,7 @@ void EnemyManager::step(float seconds, BulletManager& bm) {
 
     for (auto& enemy : enemiesOnScreen) {
         enemy->update(seconds);
-        
+        bm.testBulletHit(*enemy);
     }
 }
 

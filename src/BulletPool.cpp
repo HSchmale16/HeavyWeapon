@@ -16,6 +16,14 @@ bool Bullet::step(float time) {
     return false;
 }
 
+sf::Vector2f Bullet::getPosition() const {
+    return shape.getPosition();
+}
+
+void Bullet::draw(sf::RenderTarget& target, sf::RenderStates states) const {
+    target.draw(shape);
+}
+
 /*
  * BulletManager Impl
  */
@@ -40,10 +48,10 @@ void BulletManager::step(float time, const sf::Vector2f& pos,
         createBullet(pos, speed);
     }
     // Step each bullet forward
-    auto bit = bullets.begin();
-    while (bit != bullets.end()) {
-        if(bit->step(time)) {
-            bit = bullets.erase(bit);
+    auto bit = bullets.begin ();
+    while (bit != bullets.end ()) {
+        if(bit->step (time)) {
+            bit = bullets.erase (bit);
         } else {
             ++bit;
         }
@@ -53,9 +61,19 @@ void BulletManager::step(float time, const sf::Vector2f& pos,
 DamageCalculation BulletManager::testBulletHit(const HealthEntity& he) {
     sf::FloatRect bounds = he.getBounds();
     auto bit = bullets.begin();
-    while(bit != bullets.end()) {
-        
-        ++bit;
+
+    DamageCalculation calculation;
+
+    while (bit != bullets.end ()) {
+        if (bounds.contains (bit->getPosition ())) {
+            calculation.hit = true;
+            /// TODO: Bullet Damage Real Calculation
+            calculation.amount += 10.f;
+            // rm bullet cause hit
+            bit = bullets.erase (bit);
+        } else {
+            ++bit;
+        }
     }
     return {false, 0};
 }
@@ -63,8 +81,4 @@ DamageCalculation BulletManager::testBulletHit(const HealthEntity& he) {
 void  BulletManager::draw(sf::RenderTarget& target, sf::RenderStates states) const {
     for(auto& b : bullets)
         target.draw(b);
-}
-
-void Bullet::draw(sf::RenderTarget& target, sf::RenderStates states) const {
-    target.draw(shape);
 }

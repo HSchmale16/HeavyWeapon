@@ -60,6 +60,8 @@ public:
     /**\return true if this bullet should be removed
      */
     bool step(float time);
+
+    sf::Vector2f getPosition() const;
 };
 
 const size_t BULLET_POOL_BASE_SIZE = 2000;
